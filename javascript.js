@@ -8,8 +8,16 @@ for (let i = 0; i < 256; i++) {
 
     // if hover over a square, change color
     square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = "blue";
+        square.style.backgroundColor = colorValue;
     });
     
     grid.append(square);
 }
+
+let colorPicker = document.querySelector(".colorPicker");
+let color = document.querySelector(".colors");
+let colorValue = "black";
+colorPicker.addEventListener("change", () => {
+    color.style.backgroundColor = colorPicker.value;
+    colorValue = colorPicker.value;
+});
