@@ -29,7 +29,11 @@ colorPicker.addEventListener("change", () => {
 });
 
 // clear grid button
-document.querySelector(".clearButton").addEventListener("click", clearGrid);
+document.querySelector(".clearButton").addEventListener("click", () => {
+    clearGrid();
+    document.querySelector(".clear").style.transform = "scale(1.1)";
+    setTimeout(() => {document.querySelector(".clear").style.transform = "scale(1)";}, 100);
+});
 
 // clear grid function
 function clearGrid() {
@@ -55,7 +59,7 @@ eraserBtn.addEventListener("change", () => {
         colorValue = "white";
     }
     else {
-        document.querySelector(".eraser").style.opacity = 0.8;
+        document.querySelector(".eraser").style.opacity = null;
         document.querySelector(".eraser").style.transform = "scale(1)";
         colorValue = colorPicker.value;
     }
