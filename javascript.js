@@ -10,7 +10,14 @@ function createGrid(size) {
 
         // if hover over a square, change color
         square.addEventListener("mouseover", () => {
-            square.style.backgroundColor = colorValue;
+            
+            // rainbow event
+            if (colorValue == "rainbow") {
+                square.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+            }
+            else {
+                square.style.backgroundColor = colorValue;
+            }
         });
         
         grid.append(square);
@@ -23,7 +30,7 @@ let color = document.querySelector(".colors");
 let colorValue = "black";
 colorPicker.addEventListener("change", () => {
     color.style.backgroundColor = colorPicker.value;
-    if (!eraserBtn.checked) {
+    if (!eraserBtn.checked && !rainbowBtn.checked) {
         colorValue = colorPicker.value;
     }
 });
@@ -61,6 +68,35 @@ eraserBtn.addEventListener("change", () => {
     else {
         document.querySelector(".eraser").style.opacity = null;
         document.querySelector(".eraser").style.transform = "scale(1)";
+
+        // event rainbow
+        if (rainbowBtn.checked) {
+            colorValue = "rainbow";
+        }
+        else {
+            colorValue = colorPicker.value;
+        }
+    }
+});
+
+// rainbow
+let rainbowBtn = document.querySelector(".rainbowButton");
+rainbowBtn.addEventListener("change", () => {
+    if (rainbowBtn.checked) {
+        document.querySelector(".rainbow").style.opacity = 1;
+        document.querySelector(".rainbow").style.transform = "scale(1.1)";
+
+        // event that eraser is checked as well
+        if (eraserBtn.checked) {
+            return;
+        }
+        else {
+            colorValue = "rainbow";
+        }
+    }
+    else {
+        document.querySelector(".rainbow").style.opacity = null;
+        document.querySelector(".rainbow").style.transform = "scale(1)";
         colorValue = colorPicker.value;
     }
 });
