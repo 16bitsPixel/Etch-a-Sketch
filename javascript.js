@@ -4,11 +4,11 @@ grid.style.gridTemplateColumns = "repeat(16, 1fr)";
 grid.style.gridTemplateRows = "repeat(16, 1fr)";
 for (let i = 0; i < 256; i++) {
     let square = document.createElement("div");
-    square.style.border = "1px dashed black";
+    //square.style.border = "1px dashed black";
 
     // if hover over a square, change color
     square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = "black";
+        square.style.backgroundColor = "blue";
     });
     
     grid.append(square);
