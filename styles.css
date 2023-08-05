@@ -39,6 +39,8 @@ body {
     border: 5px solid white;
     border-radius: 50%;
     background-color: black;
+    display: flex;
+    justify-content: center;
 }
 
 .colorPicker {
@@ -50,6 +52,16 @@ body {
     width: 330px;
     border-radius: 25px;
     background-color: white;
+}
+
+.clear {
+    display: flex;
+    justify-content: center;
+}
+
+.clearText {
+    font-size: 20px;
+    align-self: center;
 }
 
 .clearButton {
