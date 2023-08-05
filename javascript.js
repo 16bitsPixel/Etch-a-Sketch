@@ -15,8 +15,22 @@ function createGrid(size) {
             if (colorValue == "rainbow") {
                 square.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
             }
+            else if (colorValue == "erase") {
+                square.style.backgroundColor = null;
+            }
             else {
-                square.style.backgroundColor = colorValue;
+                if (darken) {
+                    if (!square.classList.contains("dark")) {
+                        square.classList.add("dark");
+                        square.style.backgroundColor = colorValue;
+                    }
+                    else {
+                        square.style.backgroundColor = darkenColor(colorValue);
+                    }
+                }
+                else {
+                    square.style.backgroundColor = colorValue;
+                }
             }
         });
         
@@ -63,7 +77,7 @@ eraserBtn.addEventListener("change", () => {
     if (eraserBtn.checked) {
         document.querySelector(".eraser").style.opacity = 1;
         document.querySelector(".eraser").style.transform = "scale(1.1)";
-        colorValue = "white";
+        colorValue = "erase";
     }
     else {
         document.querySelector(".eraser").style.opacity = null;
@@ -90,9 +104,12 @@ rainbowBtn.addEventListener("change", () => {
         if (eraserBtn.checked) {
             return;
         }
-        else {
-            colorValue = "rainbow";
+        else if (darkBtn.checked) {
+            document.querySelector(".darkening").style.opacity = null;
+            document.querySelector(".darkening").style.transform = "scale(1)";
+            darken = false;
         }
+        colorValue = "rainbow";
     }
     else {
         document.querySelector(".rainbow").style.opacity = null;
@@ -100,5 +117,35 @@ rainbowBtn.addEventListener("change", () => {
         colorValue = colorPicker.value;
     }
 });
+
+// darken
+let darken;
+let darkBtn = document.querySelector(".darkButton");
+darkBtn.addEventListener("change", () => {
+    if (darkBtn.checked) {
+        document.querySelector(".darkening").style.opacity = 1;
+        document.querySelector(".darkening").style.transform = "scale(1.1)";
+        darken = true;
+
+        if (rainbowBtn.checked) {
+            document.querySelector(".rainbow").style.opacity = null;
+            document.querySelector(".rainbow").style.transform = "scale(1)";
+            colorValue = colorPicker.value;
+        }
+    }
+    else {
+        document.querySelector(".darkening").style.opacity = null;
+        document.querySelector(".darkening").style.transform = "scale(1)";
+        darken = false;
+    }
+});
+
+function darkenColor(hex) {
+    let r = parseInt(hex[1] + hex[2], 16) * 0.7;
+    let g = parseInt(hex[3] + hex[4], 16) * 0.7;
+    let b = parseInt(hex[5] + hex[6], 16) * 0.7;
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
 createGrid(16);

@@ -62,12 +62,12 @@ body {
     opacity: 1;
 }
 
-.rainbowText, .eraserText, .clearText {
+.rainbowText, .darkText, .eraserText, .clearText {
     font-size: 20px;
     align-self: center;
 }
 
-.rainbowButton, .eraserButton, .clearButton {
+.rainbowButton, .darkButton, .eraserButton, .clearButton {
     width: 0;
     height: 0;
     visibility: hidden;
