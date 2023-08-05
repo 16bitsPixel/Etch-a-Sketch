@@ -17,6 +17,7 @@ function createGrid(size) {
             }
             else if (colorValue == "erase") {
                 square.style.backgroundColor = null;
+                square.classList.remove("dark");
             }
             else {
                 if (darken) {
@@ -59,7 +60,10 @@ document.querySelector(".clearButton").addEventListener("click", () => {
 // clear grid function
 function clearGrid() {
     let pixels = Array.from(document.querySelectorAll(".pixel"));
-    pixels.forEach(pixel => pixel.style.backgroundColor = "white");
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = "white";
+        pixel.classList.remove("dark");
+    });
 }
 
 // slider
