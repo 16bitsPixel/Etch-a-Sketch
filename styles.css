@@ -52,19 +52,27 @@ body {
     width: 330px;
     border-radius: 25px;
     background-color: white;
+    opacity: 0.8;
+    transition: opacity .2s;
 }
 
-.clear {
+.rainbow:hover, .darkening:hover, .eraser:hover, .clear:hover {
+    opacity: 1;
+}
+
+.eraser, .clear {
     display: flex;
     justify-content: center;
 }
 
-.clearText {
+.eraserText, .clearText {
     font-size: 20px;
     align-self: center;
 }
 
-.clearButton {
+.eraserButton, .clearButton {
+    width: 0;
+    height: 0;
     visibility: hidden;
 }
 
