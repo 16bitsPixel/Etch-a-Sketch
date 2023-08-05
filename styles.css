@@ -52,6 +52,10 @@ body {
     background-color: white;
 }
 
+.clearButton {
+    visibility: hidden;
+}
+
 /* For the right side: grid, slider*/
 .board {
     display: flex;

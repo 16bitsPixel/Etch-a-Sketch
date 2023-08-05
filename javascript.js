@@ -4,6 +4,7 @@ grid.style.gridTemplateColumns = "repeat(16, 1fr)";
 grid.style.gridTemplateRows = "repeat(16, 1fr)";
 for (let i = 0; i < 256; i++) {
     let square = document.createElement("div");
+    square.classList.add("pixel");
     //square.style.border = "1px dashed black";
 
     // if hover over a square, change color
@@ -14,10 +15,17 @@ for (let i = 0; i < 256; i++) {
     grid.append(square);
 }
 
+// color picker
 let colorPicker = document.querySelector(".colorPicker");
 let color = document.querySelector(".colors");
 let colorValue = "black";
 colorPicker.addEventListener("change", () => {
     color.style.backgroundColor = colorPicker.value;
     colorValue = colorPicker.value;
+});
+
+// clear grid button
+let pixels = Array.from(document.querySelectorAll(".pixel"));
+document.querySelector(".clearButton").addEventListener("click", () => {
+    pixels.forEach(pixel => pixel.style.backgroundColor = "white");
 });
