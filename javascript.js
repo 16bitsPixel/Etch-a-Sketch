@@ -25,7 +25,10 @@ colorPicker.addEventListener("change", () => {
 });
 
 // clear grid button
-let pixels = Array.from(document.querySelectorAll(".pixel"));
-document.querySelector(".clearButton").addEventListener("click", () => {
+document.querySelector(".clearButton").addEventListener("click", clearGrid);
+
+// clear grid function
+function clearGrid() {
+    let pixels = Array.from(document.querySelectorAll(".pixel"));
     pixels.forEach(pixel => pixel.style.backgroundColor = "white");
-});
+}
