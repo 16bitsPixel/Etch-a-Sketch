@@ -104,20 +104,28 @@ rainbowBtn.addEventListener("change", () => {
         document.querySelector(".rainbow").style.opacity = 1;
         document.querySelector(".rainbow").style.transform = "scale(1.1)";
 
-        // event that eraser is checked as well
-        if (eraserBtn.checked) {
-            return;
-        }
-        else if (darkBtn.checked) {
+        // event that darken is checked as well
+        if (darkBtn.checked) {
             document.querySelector(".darkening").style.opacity = null;
             document.querySelector(".darkening").style.transform = "scale(1)";
             darken = false;
+        }
+
+        // event that eraser is checked as well
+        if (eraserBtn.checked) {
+            return;
         }
         colorValue = "rainbow";
     }
     else {
         document.querySelector(".rainbow").style.opacity = null;
         document.querySelector(".rainbow").style.transform = "scale(1)";
+
+        // event eraser is checked
+        if (eraserBtn.checked) {
+            return;
+        }
+
         colorValue = colorPicker.value;
     }
 });
